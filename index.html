@@ -9,29 +9,36 @@
 
 <body>
 
-<div class="wrapper">
+<nav id="navbar">
+	<ul>
+		<li id="navbar-logo"><a href="#">Home</a></li>
+		<li id="sbcontainer">
+			<input type="search" id="searchbox" name="search" placeholder="Search">
+			<i class="fas fa-search"></i>
+		</li>
+	</ul>
+	<ul id="navbar-right">
+		<li><a href="#">Signin</a></li>
+		<li><a href="#">Signup</a></li>
+		<li>
+			<button id="settingsButton" onclick="displaySettings()"><i class="fas fa-ellipsis-v"></i></button>
+			<div id="settings" class="settings">
+				<label>Theme</label>
+				<select id="theme" onChange='changeTheme(event)'>
+				  <!-- <option value="selectTheme">Select Theme</option> -->
+				  <option value="light">Light</option>
+				  <option value="dark">Dark</option>
+				  <option value="blue">Blue</option>
+				  <option value="violet">Violet</option>
+				  <option value="green">Green</option>
+				  <option value="tomato">Tomato</option>
+				</select>
+			</div>
+		</li>
+	</ul>
+</nav>
 
-	<nav id="navbar">
-		<ul>
-			<li id="navbar-logo"><a href="#">Home</a></li>
-			<li id="sbcontainer">
-				<input type="search" id="searchbox" name="search" placeholder="Search"> 
-			</li>
-		</ul>
-		<ul id="navbar-right">
-			<li><a href="#">Signin</a></li>
-			<li><a href="#">Signup</a></li>					
-			<li>
-				<button id="settingsButton" onclick="displaySettings()"><i class="fas fa-ellipsis-v"></i></button>
-				<div id="settings" class="settings">
-					<h6>Theme</h6>
-					<button><i class="fas fa-circle" style="color: white"></i></button>
-					<button><i class="fas fa-circle" style="color: black"></i></button>
-					<button><i class="fas fa-circle" style="color: green"></i></button>
-				</div>
-			</li>
-		</ul>
-	</nav>
+<div class="wrapper">
 
 	<section class="top-container">
 		<header class="showcase">
@@ -54,7 +61,7 @@
 		<hr>
 
 		<div class="feedtype">
-			<h4>From your subscriptions<i class="fas fa-ellipsis-v"></i></h4>
+			<h4>From your subscriptions</h4>
 		</div>
 
 		<div id="fromsubscriptions">
@@ -144,7 +151,7 @@
 			</div>
 		</div>
 
-		<a href="#" class="viewmore">View more</a>
+		<button class="viewmore">View more</button>
 		<hr>
 
 		<div class="feedtype">
@@ -238,15 +245,15 @@
 			</div>
 		</div>
 
-		<a href="#" class="viewmore">View more</a>
+		<button class="viewmore">View more</button>
 		
 	</div>
 
-	<footer>
-		<p>A series of toobs &copy; 2020</p>
-	</footer>
-
 </div>
+
+<footer>
+	<p>A series of toobs &copy; 2020</p>
+</footer>
 
 <script type="text/javascript">
 
@@ -259,13 +266,51 @@
 		console.log(settings.classList);
 	}
 
-	function myFunction() {
-	  var x = document.getElementById("myDropdown");
-	  console.log(x.classList);
-	  x.classList.toggle("show");
-	  console.log(x.classList);
+	let themes = {
+		light: {
+			background: "#e6e6e6",
+			card: "#ffffff",
+			text: "#000000"
+		},
+		dark: {
+			background: "#1a1a1a",
+			card: "#000000",
+			text: "#ffffff"
+		},
+		blue: {
+			background: "#203344",
+			card: "#172531",
+			text: "#f0f4f8"
+		},
+		violet: {
+			background: "#4b4068",
+			card: "#362e4a",
+			text: "#f6f5f9"
+		},
+		green: {
+			background: "#519430",
+			card: "#3a6a22",
+			text: "#f7fcf5"
+		},
+		tomato: {
+			background: "#b72214",
+			card: "#83180f",
+			text: "#fef4f3"
+		}
 	}
 
+  let theme = document.getElementById("theme");
+
+  console.log(themes);
+  function changeTheme(event) {
+  	// console.log(event);
+  	// console.log(theme.value);
+  	let { value } = event.target;
+  	console.log(value);
+  	document.documentElement.style.setProperty("--backgroundColor", themes[value].background);
+  	document.documentElement.style.setProperty("--card", themes[value].card);
+  	document.documentElement.style.setProperty("--textColor", themes[value].text);
+  }
 
 </script>
 
