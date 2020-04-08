@@ -10,33 +10,64 @@
 <body>
 
 <nav id="navbar">
-	<ul>
-		<li id="navbar-logo"><a href="#">Home</a></li>
-		<li id="sbcontainer">
-			<input type="search" id="searchbox" name="search" placeholder="Search">
-			<i class="fas fa-search"></i>
-		</li>
-	</ul>
-	<ul id="navbar-right">
-		<li><a href="#">Signin</a></li>
-		<li><a href="#">Signup</a></li>
-		<li>
-			<button id="settingsButton" onclick="displaySettings()"><i class="fas fa-ellipsis-v"></i></button>
-			<div id="settings" class="settings">
-				<label>Theme</label>
-				<select id="theme" onChange='changeTheme(event)'>
-				  <!-- <option value="selectTheme">Select Theme</option> -->
-				  <option value="light">Light</option>
-				  <option value="dark">Dark</option>
-				  <option value="blue">Blue</option>
-				  <option value="violet">Violet</option>
-				  <option value="green">Green</option>
-				  <option value="tomato">Tomato</option>
-				</select>
-			</div>
-		</li>
-	</ul>
+	
+	<div id="sidebar" class="sidebar">
+		<a class="btn-close" onclick="closeSideBar()"><i class="fas fa-times"></i></a>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Signin</a></li>
+			<li><a href="#">Signup</a></li>
+		</ul>
+	</div>
+
+	<a href="#" class="navbarHamburger" onclick="openSideBar()"><i class="fas fa-bars"></i></a>
+	
+	<div id="topbar">
+		<ul>
+			<li id="navbar-logo"><a href="#">Home</a></li>
+			<li id="sbcontainer">
+				<input type="search" id="searchbox" name="search" placeholder="Search">
+				<i class="fas fa-search"></i>
+			</li>
+		</ul>
+		<ul id="topbar-right">
+			<li><a href="#">Signin</a></li>
+			<li><a href="#">Signup</a></li>
+		</ul>
+	</div>
+
+	<div class="settingsMenu">
+		<button id="settingsButton" onclick="displaySettings()"><i class="fas fa-ellipsis-v"></i></button>
+		<div id="settings" class="settings">
+			<label>Theme</label>
+			<select id="theme" onChange='changeTheme(event)'>
+			  <!-- <option value="selectTheme">Select Theme</option> -->
+			  <option value="light">Light</option>
+			  <option value="dark">Dark</option>
+			  <option value="blue">Blue</option>
+			  <option value="violet">Violet</option>
+			  <option value="green">Green</option>
+			  <option value="tomato">Tomato</option>
+			</select>
+		</div>
+	</div>
+
 </nav>
+
+<div id="main">
+
+</div>
+
+<script type="text/javascript">
+	function openSideBar(){
+		document.getElementById('sidebar').style.width = '250px';
+		document.getElementById('main').style.marginLeft = '250px';
+	}
+	function closeSideBar(){
+		document.getElementById('sidebar').style.width = '0px';
+		document.getElementById('main').style.marginLeft = '0px';
+	}
+</script>
 
 <div class="wrapper">
 
